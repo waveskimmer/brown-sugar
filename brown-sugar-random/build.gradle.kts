@@ -1,10 +1,9 @@
 plugins {
     id("java")
     alias(libs.plugins.kotlin.jvm)
+    `java-library`
+    `maven-publish`
 }
-
-group = "io.github.waveskimmer.kotlin"
-version = "unspecified"
 
 repositories {
     mavenCentral()
@@ -17,6 +16,20 @@ dependencies {
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
-tasks.test {
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+tasks.named<Test>("test") {
     useJUnitPlatform()
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            from(components["java"])
+        }
+    }
 }

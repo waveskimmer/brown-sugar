@@ -26,8 +26,23 @@ class StringTest {
 
     @Test
     fun `isNumeric works`() {
-        assertFalse { "abc".isNumeric() }
-        assertTrue { "123".isNumeric() }
-        assertFalse { "".isNumeric() }
+        assertFalse { "abc".isNumeric }
+        assertTrue { "123".isNumeric }
+        assertFalse { "".isNumeric }
+    }
+
+    @Test
+    fun `isAlpha works`() {
+        assertFalse { "123".isAlpha }
+        assertTrue { "abc".isAlpha }
+        assertFalse { "".isAlpha }
+    }
+
+    @Test
+    fun `isAlphaNumeric works`() {
+        assertTrue { "123".isAlphaNumeric }
+        assertTrue { "abc".isAlphaNumeric }
+        assertTrue { "123abc".isAlphaNumeric }
+        assertFalse { "".isAlphaNumeric }
     }
 }

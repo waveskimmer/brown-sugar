@@ -12,4 +12,5 @@ plugins {
 
 rootProject.name = "brown-sugar"
 include(":brown-sugar-core")
+include(":brown-sugar-maybe")
 include(":brown-sugar-random")
